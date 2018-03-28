@@ -1,0 +1,20 @@
+flags: {}
+extra-package-dbs: []
+packages:
+- '.'
+resolver: lts-9.11
+image:
+  containers:
+    - name: "sample-haskell-static"
+      base: "fpco/haskell-scratch:integer-gmp"
+      executables: 
+        - sample-haskell-static
+      add: 
+        data: /data
+      entrypoints:
+      - sample-haskell-static
+docker:
+    enable: true
+    repo: "framp/haskell-stack-link:latest"
+    run-args: ["--net=bridge", "-p3000:3000"]
+    
